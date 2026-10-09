@@ -57,7 +57,9 @@ bool ReadRemoteFile(std::string const & url, std::vector<uint8_t> & contents, in
 
   return true;
 }
-
+#ifndef TRAFFIC_DATA_BASE_URL
+#define TRAFFIC_DATA_BASE_URL ""
+#endif
 std::string MakeRemoteURL(std::string const & name, uint64_t version)
 {
   if (std::string(TRAFFIC_DATA_BASE_URL).empty())
