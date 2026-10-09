@@ -27,28 +27,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
     this.onClickListener = onClickListener;
   }
 
-  private void onMenuItemClick(MenuBottomSheetItem item)
-  {
-    if (onClickListener != null)
-      onClickListener.onClick();
-    item.onClickListener.onClick();
-  }
-
-  @NonNull
-  @Override
-  public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
-  {
-    View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.bottom_sheet_menu_item, viewGroup, false);
-    return new ViewHolder(view);
-  }
-
   @Override
   public void onBindViewHolder(ViewHolder viewHolder, final int position)
   {
     final MenuBottomSheetItem item = dataSet.get(position);
 
-    // إخفاء زر التبرع نهائياً من القائمة
-    if (item.iconRes == R.drawable.ic_donate)
+    // إخفاء زر التبرع وقسم "حول التطبيق" نهائياً من القائمة
+    if (item.iconRes == R.drawable.ic_donate || item.titleRes == R.string.about)
     {
       viewHolder.itemView.setVisibility(View.GONE);
       viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
@@ -72,7 +57,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
       badge.setText(String.valueOf(item.badgeCount));
       badge.setVisibility(View.VISIBLE);
     }
-  }
     else
     {
       badge.setVisibility(View.GONE);
