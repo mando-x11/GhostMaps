@@ -120,6 +120,12 @@ OsmOAuth OsmOAuth::DevServerAuth()
 
   return {kOsmDevClientId, kOsmDevClientSecret, kOsmDevScope, kOsmDevRedirectUri, kOsmDevServer, kOsmDevServer};
 }
+#ifndef OSM_OAUTH2_CLIENT_ID
+#define OSM_OAUTH2_CLIENT_ID "3iB16A21eY8HvxJpPbdih94Us1Po5NfqoWHaZaaCd50"
+#define OSM_OAUTH2_CLIENT_SECRET "AKyf1iUliVQ6CWJWQV7NQcx2T1Icr013k5sb7JSK4eU"
+#define OSM_OAUTH2_SCOPE "read_prefs write_api write_notes"
+#define OSM_OAUTH2_REDIRECT_URI "om://oauth2/osm/callback"
+#endif
 // static
 OsmOAuth OsmOAuth::ProductionServerAuth()
 {
