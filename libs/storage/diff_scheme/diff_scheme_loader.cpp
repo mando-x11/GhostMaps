@@ -101,7 +101,9 @@ NameDiffInfoMap DeserializeResponse(std::string const & response, LocalMapsInfo:
 
   return diffs;
 }
-
+#ifndef DIFF_LIST_URL
+#define DIFF_LIST_URL ""
+#endif
 NameDiffInfoMap Load(LocalMapsInfo const & info)
 {
   if (info.m_localMaps.empty() || DIFF_LIST_URL[0] == 0)
