@@ -1,15 +1,3 @@
-// Shared application identity and signing rules keep phone and Wear artifacts compatible with the
-// Wear Data Layer, which requires both peers to use the same application ID and certificate.
-def securityPropertiesFile = rootProject.file('app/secure.properties')
-def securityPropertiesFileExists = securityPropertiesFile.exists()
-if (securityPropertiesFileExists)
-  apply from: securityPropertiesFile
-
-def signingStoreFile = { String path ->
-  def storeFile = new File(path)
-  return storeFile.isAbsolute() ? storeFile : rootProject.file("app/${path}")
-}
-
 android {
   signingConfigs {
     debug {
@@ -24,27 +12,16 @@ android {
       storePassword '12345678'
       keyAlias 'debug'
       keyPassword '12345678'
-    } else {
-        println('The release signing keys are unavailable')
-      }
     }
   }
 
   buildTypes {
     debug {
-      applicationIdSuffix '.debug'
-      versionNameSuffix '-debug'
-      signingConfig = signingConfigs.debug
+      signingConfig signingConfigs.debug
     }
 
     release {
-      signingConfig = signingConfigs.release
-    }
-
-    beta {
-      applicationIdSuffix '.beta'
-      versionNameSuffix '-beta'
-      signingConfig = signingConfigs.release
+      signingConfig signingConfigs.release
     }
   }
 }
