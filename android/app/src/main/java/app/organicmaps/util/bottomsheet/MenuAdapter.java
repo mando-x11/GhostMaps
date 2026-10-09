@@ -27,13 +27,22 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
     this.onClickListener = onClickListener;
   }
 
+  @NonNull
   @Override
-  public void onBindViewHolder(ViewHolder viewHolder, final int position)
+  public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+  {
+    final View view = LayoutInflater.from(parent.getContext())
+                                    .inflate(R.layout.bottom_sheet_menu_item, parent, false);
+    return new ViewHolder(view);
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position)
   {
     final MenuBottomSheetItem item = dataSet.get(position);
 
-    // إخفاء زر التبرع وقسم "حول التطبيق" نهائياً من القائمة
-    if (item.iconRes == R.drawable.ic_donate || item.titleRes == R.string.about)
+    // إخفاء زر التبرع نهائياً من القائمة
+    if (item.iconRes == R.drawable.ic_donate)
     {
       viewHolder.itemView.setVisibility(View.GONE);
       viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
@@ -49,7 +58,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
 
     final ImageView iv = viewHolder.getIconImageView();
     iv.setImageResource(item.iconRes);
-    viewHolder.getContainer().setOnClickListener((v) -> onMenuItemClick(item));
+    viewHolder.getContainer().setOnClickListener((v) -> {
+      if (onClickListener != null)
+        onClickListener.onClick(item);
+    });
     viewHolder.getTitleTextView().setText(item.titleRes);
     TextView badge = viewHolder.getBadgeTextView();
     if (item.badgeCount > 0)

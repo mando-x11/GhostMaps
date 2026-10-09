@@ -100,7 +100,8 @@
     <string name="measurement_units">Measurement units</string>
     <!-- Detailed description of Measurement Units settings button -->
     <string name="measurement_units_summary">Choose between miles and kilometers</string>
-
+    <item name="ruler" type="id"/>
+    <string name="about">About</string>
     <!-- SECTION: Search categories -->
     <!-- Search category for cafes, bars, restaurants; any changes should be duplicated in categories.txt @category_eat! -->
     <string name="category_eat">Where to eat</string>
@@ -146,7 +147,7 @@
     <string name="category_water">Water</string>
     <!-- Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! -->
     <string name="category_rv">RV Facilities</string>
-
+    <item name="ruler" type="id"/>
     <!-- SECTION: Other translations -->
     <!-- Notes field in Bookmarks view -->
     <string name="description">Notes</string>
