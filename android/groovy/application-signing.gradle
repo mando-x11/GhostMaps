@@ -20,13 +20,11 @@ android {
     }
 
     release {
-      if (securityPropertiesFileExists) {
-        println('The release signing keys are available')
-        storeFile signingStoreFile(propStoreFile)
-        storePassword propStorePassword
-        keyAlias propKeyAlias
-        keyPassword propKeyPassword
-      } else {
+      storeFile rootProject.file('app/debug.keystore')
+      storePassword '12345678'
+      keyAlias 'debug'
+      keyPassword '12345678'
+    } else {
         println('The release signing keys are unavailable')
       }
     }
