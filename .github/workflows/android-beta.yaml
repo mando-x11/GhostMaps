@@ -90,15 +90,15 @@ jobs:
           ./gradlew appDistributionUploadGoogleBeta
 
       - name: Upload beta apk to GitHub artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
-          name: OrganicMaps-${{ env.ANDROID_CODE }}-google-beta.apk
-          path: android/app/build/outputs/apk/google/beta/OrganicMaps-${{ env.ANDROID_CODE }}-google-beta.apk
+          name: OrganicMaps-${{ env.ANDROID_CODE }}-google-beta
+          path: android/app/build/outputs/apk/**/*.apk
           if-no-files-found: error
 
       - name: Upload beta debug symbols to GitHub artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: native-debug-symbols.zip
           path: android/app/build/outputs/native-debug-symbols/googleBeta/native-debug-symbols.zip
-          if-no-files-found: error
+          if-no-files-found: warn

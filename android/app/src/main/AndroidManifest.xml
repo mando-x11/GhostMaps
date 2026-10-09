@@ -76,7 +76,7 @@
       android:dataExtractionRules="@xml/backup_content_v31"
       android:enableOnBackInvokedCallback="false"
       android:icon="@mipmap/ic_launcher"
-      android:label="GhostMaps"
+      android:label="Ghost Maps"
       android:localeConfig="@xml/locales_config"
       android:theme="@style/MwmTheme"
       android:resizeableActivity="true"
