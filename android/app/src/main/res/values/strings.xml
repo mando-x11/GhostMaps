@@ -147,7 +147,7 @@
     <string name="category_water">Water</string>
     <!-- Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! -->
     <string name="category_rv">RV Facilities</string>
-    <item name="ruler" type="id"/>
+    
     <!-- SECTION: Other translations -->
     <!-- Notes field in Bookmarks view -->
     <string name="description">Notes</string>
