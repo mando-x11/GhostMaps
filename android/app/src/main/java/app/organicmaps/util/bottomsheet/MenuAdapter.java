@@ -60,7 +60,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
     iv.setImageResource(item.iconRes);
     viewHolder.getContainer().setOnClickListener((v) -> {
       if (onClickListener != null)
-        onClickListener.onClick(item);
+        onClickListener.onClick();
     });
     viewHolder.getTitleTextView().setText(item.titleRes);
     TextView badge = viewHolder.getBadgeTextView();
