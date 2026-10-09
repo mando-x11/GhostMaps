@@ -22,7 +22,7 @@ android {
     release {
       if (securityPropertiesFileExists) {
         println('The release signing keys are available')
-        storeFile signingStoreFile(spropStoreFile)
+        storeFile signingStoreFile(propStoreFile)
         storePassword spropStorePassword
         keyAlias spropKeyAlias
         keyPassword spropKeyPassword
