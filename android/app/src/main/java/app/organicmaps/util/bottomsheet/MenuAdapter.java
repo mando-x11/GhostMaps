@@ -46,14 +46,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
   public void onBindViewHolder(ViewHolder viewHolder, final int position)
   {
     final MenuBottomSheetItem item = dataSet.get(position);
-    final ImageView iv = viewHolder.getIconImageView();
-    if (item.iconRes == R.drawable.ic_donate && Config.isNY())
+
+    // إخفاء زر التبرع نهائياً من القائمة
+    if (item.iconRes == R.drawable.ic_donate)
     {
-      iv.setImageResource(R.drawable.ic_christmas_tree);
-      iv.setImageTintMode(null);
+      viewHolder.itemView.setVisibility(View.GONE);
+      viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+      return;
     }
     else
-      iv.setImageResource(item.iconRes);
+    {
+      viewHolder.itemView.setVisibility(View.VISIBLE);
+      viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(
+          RecyclerView.LayoutParams.MATCH_PARENT,
+          RecyclerView.LayoutParams.WRAP_CONTENT));
+    }
+
+    final ImageView iv = viewHolder.getIconImageView();
+    iv.setImageResource(item.iconRes);
     viewHolder.getContainer().setOnClickListener((v) -> onMenuItemClick(item));
     viewHolder.getTitleTextView().setText(item.titleRes);
     TextView badge = viewHolder.getBadgeTextView();
@@ -62,6 +72,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
       badge.setText(String.valueOf(item.badgeCount));
       badge.setVisibility(View.VISIBLE);
     }
+  }
     else
     {
       badge.setVisibility(View.GONE);
