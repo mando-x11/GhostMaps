@@ -146,6 +146,13 @@ std::string Platform::ReadPathForFile(std::string const & file, std::string sear
                                 "\nr: ", m_resourcesDir, "\ns: ", m_settingsDir));
 }
 
+#ifndef METASERVER_URL
+#define METASERVER_URL "https://organicmaps.app"
+#endif
+
+#ifndef DEFAULT_URLS_JSON
+#define DEFAULT_URLS_JSON "[\"https://cdn.organicmaps.app/\", \"https://organicmaps.app/\"]"
+#endif
 std::string Platform::MetaServerUrl() const
 {
   return METASERVER_URL;
